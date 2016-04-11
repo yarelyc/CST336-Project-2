@@ -20,7 +20,7 @@ function getContributors(){
   
 
 function getRegion(){
-    //this method gets all  contributos from the database
+    //this method gets all regions from the database
      global $dbConn;
      
      $sql = "SELECT region FROM product GROUP BY region";
@@ -37,35 +37,32 @@ function getRegion(){
 function getProducts() {
     global $dbConn;
     
+    //Start query with joining all tables
     $sql = "SELECT productId, productName, price, era, region, productType
     FROM product NATURAL JOIN productType NATURAL JOIN contributor";
 
-    if (isset($_GET['inputForm'])) { //checks if the fomr is submitted
+    if (isset($_GET['inputForm'])) { //checks if the form is submitted
 
         //this  filters the data by era
-        if (isset($_GET['filertByEra'])) {
-      
-            $era = "none";
+        $era = "none";
+        if (isset($_GET['filertByEra']) && $_GET['filertByEra'] != "all" ) {
+            
             if($_GET['filertByEra'] == "1750"){
                 $era = " WHERE era > 1750 and era <= 1850";
             }else if($_GET['filertByEra'] == "1850"){
                 $era = " WHERE era > 1850 and era <= 1950";
             }else if($_GET['filertByEra'] == "1950"){
                 $era = " WHERE era > 1950";
-            }else{
-                $era = "none"; //in the case that all is selected
             }
         }
         
           //this  filters the data by type
         if (isset($_GET['filertByType']) && $_GET['filertByType'] != "all") {
-      
             if($era = "none"){
                 $era = " WHERE";//if there is no filter by era we add the WHERE clause
             }else{
-                $era .= " AND"; //If there is other filters included
+                $era .= " AND"; //If there is other filters included we add the AND
             }
-        
             $era .= " productType = :productType"; //Using Named Parameters to prevent SQL Injection
             $namedParameters[":productType"] =  $_GET['filertByType']; //sending parameters
         }
@@ -81,9 +78,8 @@ function getProducts() {
         
             $era .= " contributorName = :contributorName"; //Using Named Parameters to prevent SQL Injection
             $namedParameters[":contributorName"] =  $_GET['contributorName']; //sending parameters
-
         }
-    
+
            //this  filters the data by type
         if (isset($_GET['region']) && $_GET['region'] != "all") {
       
@@ -100,7 +96,7 @@ function getProducts() {
             $sql .= $era;
         }
          
-        
+        //order by price or name in ascending or descending form
         if (isset($_GET['orderBy'])) {
       
             if($_GET['orderBy'] == "priceLow"){
@@ -221,7 +217,6 @@ function getProducts() {
                      echo "<td>";
                         echo $record['productName'];
                      echo "</td>";
-                     
                      echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
                      echo "<td>".$record['era']."</td>";
                      echo "<td>".$record['region']."</td>";
