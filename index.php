@@ -1,3 +1,10 @@
+<?php
+     session_start();
+    include('includes/database.php');
+    $dbConn = getDatabaseConnection('ooa');
+
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
