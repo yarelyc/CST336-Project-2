@@ -227,7 +227,7 @@ function getProducts() {
                     foreach ($records as $record) {
                         echo "<tr>";
                         echo "<td> <a href='getProductInfo.php?productId=".$record['productId']."' target = 'productInfoiFrame'>" . $record['productName'] . "</a></td>";
-                        echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
+                        echo "<td> $".$record['price']."</td>"; //displays the price, era, region, and product Type
                         echo "<td>".$record['era']."</td>";
                         echo "<td>".$record['region']."</td>";
                         echo "<td>".$record['productType']."</td>";
