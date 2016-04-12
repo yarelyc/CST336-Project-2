@@ -1,0 +1,47 @@
+
+header{
+     border: 10px solid black;
+     text-align:center;
+}
+body{
+    padding: 30px;
+    width: 1000px;
+    margin: 0 auto;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1693c8+0,1380a7+100;Otts */
+    background: #1693c8; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1693c8 0%, #1380a7 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #1693c8 0%,#1380a7 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #1693c8 0%,#1380a7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1693c8', endColorstr='#1380a7',GradientType=0 ); /* IE6-9 */
+
+}
+
+main{
+  font-family:cursive;
+   margin: 0 auto;
+   text-align:center;
+}
+#table{
+   font-family:cursive;
+   margin: 0 auto;
+   background-color: white;
+   text-align:center;
+   border: 10px solid black;
+}
+#sort{
+   padding: 10px !important;
+   outline: 5px dotted black;
+   background-color: white;
+
+}
+#welcome{
+    font-family: cursive;
+    padding: 8px !important;
+    text-align: center;
+    font-size: x-large;
+}
+#results{
+    width: 1000px;
+    background-color: white;
+}

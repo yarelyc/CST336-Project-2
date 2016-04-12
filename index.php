@@ -130,13 +130,18 @@ function getProducts() {
 <html>
     <head>
         <title>Project 2</title>
+        <link href ="style.css" rel="stylesheet"/>
     </head>
     <body>
-        <h1> Ott's Oddities and ...</h1>
+        
+        <header>
+            <img src = "includes/home_banner.jpg">
+        </header>
+        <div id="welcome">
+            Welcome To Our Store!<br>    
+        </div>
         <main>
-             <?php
-            
-             ?>
+            <div id="sort">
             <form>
                 <strong>Sort by: </strong>
                   <select name="orderBy">
@@ -166,6 +171,7 @@ function getProducts() {
                   <input type="radio" name="filertByType" value="Metal" id = "sixType"><label for="sixType">Metal</label>
                   
                   <br/>
+           
                   
                   <!--This first get the contributors names from the database to then display them-->
                   <strong>Contributor Name: </strong>
@@ -196,54 +202,55 @@ function getProducts() {
                  <br/>
                   <br/>
                   <input type="submit" value="Search Products" name="inputForm">
-                  
             </form>
-            
+         </div> <!-- Ends "sort" div-->
             <!--Table to display output-->
-         <table border = "1">
-        <!--New table row-->
-        <tr>
-             <th> Name </th>
-             <th> Price</th>
-              <th> Era</th>
-             <th> Region </th>
-             <th> Product Type</th>
-        </tr>
-             <?php
-             if(isset($_GET['inputForm'])){
-                 echo '<form method="post" action="shoppingCart.php">';
-                 $records = getProducts();
-                 foreach ($records as $record) {
-                     echo "<tr>";
-                         echo "<td>";
-                            echo $record['productName'];//Turn this list into a list of checkboxes
-                         echo "</td>";
-                         echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
-                         echo "<td>".$record['era']."</td>";
-                         echo "<td>".$record['region']."</td>";
-                         echo "<td>".$record['productType']."</td>";
-                         echo "<td><input type='checkbox' name='checkedItems[]' value=".$record['productId']."/>"."</td>";
-                         $_SESSION['productId'] = $record['productId'];
-                     
-                     echo "</tr>";
-                 }
-                 echo '<input type="submit" name="submitCart" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
-                 echo '</form>';
-             }
-             ?>
-          </table>
-         
-              <?php
-                
-                //if(isset($_GET['inputForm'])){
-                      //echo '<input type="submit" name="shoppingCart" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
-                     // echo '</form>';
-                  
-                //}
-                
-              ?>
-          
         
+        <br>
+
+        <div id="results">
+        
+         <div style="float:left" padding="10px" id="table">
+             <table border = "1">
+             <form method="post" action="shoppingCart.php">
+        <!--New table row-->
+                 <tr>
+                     <th> Name </th>
+                     <th> Price</th>
+                     <th> Era</th>
+                     <th> Region </th>
+                     <th> Product Type</th>
+                </tr>
+             <?php
+                if(isset($_GET['inputForm'])){
+                 
+                    
+                    $records = getProducts();
+                    foreach ($records as $record) {
+                        echo "<tr>";
+                        echo "<td> <a href='getProductInfo.php?productId=".$record['productId']."' target = 'productInfoiFrame'>" . $record['productName'] . "</a></td>";
+                        echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
+                        echo "<td>".$record['era']."</td>";
+                        echo "<td>".$record['region']."</td>";
+                        echo "<td>".$record['productType']."</td>";
+                        echo "<td><input type='checkbox' name='checkedItems[]' value=".$record['productId']."/>"."</td>";
+                        $_SESSION['productId'] = $record['productId'];
+                        echo "</tr>";
+                 }
+                 //echo '<input type="submit" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
+                 
+             }?>
+             <INPUT TYPE="image" SRC="includes/shopping.png" ALT="SUBMIT" name="submitCart">
+             </form>
+             </table>
+             </div>
+          </div><!-- ends results div-->
+          
+          <div style="float:left" id="table">
+          <iframe name = "productInfoiFrame" width = "200" height "300"
+         src="getProductInfo.php" frameborder="1"></iframe> 
+          </div>
+         
         </main>
     </body>
 </html>
