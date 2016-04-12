@@ -51,6 +51,7 @@ function getItems(){
                     if($record['productId'] == $productId[$i]){
                         echo "<tr>";
                         echo "<td> <a href='getProductInfo.php?productId=".$record['productId']."' target = 'productInfoiFrame'>" . $record['productName'] . "</a></td>";
+                       // echo "<td> $record['"
                         echo "<td>".$record['price']."</td>";
                         $total += $record['price'];
                         echo "</tr>";
