@@ -210,26 +210,40 @@ function getProducts() {
              <th> Product Type</th>
         </tr>
              <?php
-             
-             $records = getProducts();
-             foreach ($records as $record) {
-                 echo "<tr>";
-                     echo "<td>";
-                        echo $record['productName'];
-                     echo "</td>";
-                     echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
-                     echo "<td>".$record['era']."</td>";
-                     echo "<td>".$record['region']."</td>";
-                     echo "<td>".$record['productType']."</td>";
-                 
-                 echo "</tr>";
+             if(isset($_GET['inputForm'])){
+                 echo '<form method="post" action="shoppingCart.php">';
+                 $records = getProducts();
+                 foreach ($records as $record) {
+                     echo "<tr>";
+                         echo "<td>";
+                            echo $record['productName'];//Turn this list into a list of checkboxes
+                         echo "</td>";
+                         echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
+                         echo "<td>".$record['era']."</td>";
+                         echo "<td>".$record['region']."</td>";
+                         echo "<td>".$record['productType']."</td>";
+                         echo "<td><input type='checkbox' name='checkedItems[]' value=".$record['productId']."/>"."</td>";
+                         $_SESSION['productId'] = $record['productId'];
+                     
+                     echo "</tr>";
+                 }
+                 echo '<input type="submit" name="submitCart" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
+                 echo '</form>';
              }
              ?>
           </table>
-        
          
-         
+              <?php
+                
+                //if(isset($_GET['inputForm'])){
+                      //echo '<input type="submit" name="shoppingCart" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
+                     // echo '</form>';
+                  
+                //}
+                
+              ?>
           
+        
         </main>
     </body>
 </html>
