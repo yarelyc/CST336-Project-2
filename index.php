@@ -121,8 +121,6 @@ function getProducts() {
     }  
     
     return (array());
-    
-    
 }
 
 ?>
@@ -229,7 +227,7 @@ function getProducts() {
                     foreach ($records as $record) {
                         echo "<tr>";
                         echo "<td> <a href='getProductInfo.php?productId=".$record['productId']."' target = 'productInfoiFrame'>" . $record['productName'] . "</a></td>";
-                        echo "<td>".$record['price']."</td>"; //displays the price, era, region, and product Type
+                        echo "<td> $".$record['price']."</td>"; //displays the price, era, region, and product Type
                         echo "<td>".$record['era']."</td>";
                         echo "<td>".$record['region']."</td>";
                         echo "<td>".$record['productType']."</td>";
@@ -240,7 +238,10 @@ function getProducts() {
                  //echo '<input type="submit" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
                  
              }?>
-             <INPUT TYPE="image" SRC="includes/shopping.png" ALT="SUBMIT" name="submitCart">
+                 <!-- <INPUT TYPE="submit" SRC="includes/shopping.png" ALT="SUBMIT" name="submitCart"> -->
+                    <button type="submit" name="submitCart" value="Checkout">
+                        <img src="includes/shopping.png" />
+                    </button>
              </form>
              </table>
              </div>
