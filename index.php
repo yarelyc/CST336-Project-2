@@ -222,7 +222,7 @@ function getProducts() {
                          echo "<td>".$record['era']."</td>";
                          echo "<td>".$record['region']."</td>";
                          echo "<td>".$record['productType']."</td>";
-                         echo "<td><input type='checkbox' name='checkedItems[]' value=".$record['productId']."/>"."</td>";
+                         echo "<td><input type='checkbox' name='checkedItems[]' value=".$record['productId'].">"."</td>";
                          $_SESSION['productId'] = $record['productId'];
                      
                      echo "</tr>";
