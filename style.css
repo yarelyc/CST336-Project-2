@@ -2,6 +2,9 @@
 header{
      border: 10px solid black;
      text-align:center;
+     width: 558px!important;
+     height:285;
+     margin:0 auto !important
 }
 body{
     padding: 30px;
@@ -42,6 +45,15 @@ main{
     font-size: x-large;
 }
 #results{
-    width: 1000px;
+    width: 800px;
     background-color: white;
+    
+      text-align : center;
+}
+#cart{
+   width: 500px;
+    text-align : center; 
+    margin: 0 auto;
+    padding: 10px;
+    font-family: cursive;
 }
