@@ -121,8 +121,6 @@ function getProducts() {
     }  
     
     return (array());
-    
-    
 }
 
 ?>
@@ -240,7 +238,10 @@ function getProducts() {
                  //echo '<input type="submit" value="View Cart and Checkout">';//create a form somewhow within the php to submit it
                  
              }?>
-             <INPUT TYPE="image" SRC="includes/shopping.png" ALT="SUBMIT" name="submitCart">
+                 <!-- <INPUT TYPE="submit" SRC="includes/shopping.png" ALT="SUBMIT" name="submitCart"> -->
+                    <button type="submit" name="submitCart" value="Checkout">
+                        <img src="includes/shopping.png" />
+                    </button>
              </form>
              </table>
              </div>

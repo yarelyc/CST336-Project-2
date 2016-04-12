@@ -16,6 +16,7 @@ function getItems(){
     
      return $records;
 }
+    
 
 ?>
 
@@ -32,6 +33,12 @@ function getItems(){
     </head>
     <body>
         <br>
+        <?php
+        if(!isset($_POST['checkedItems'])){
+                echo "<h1 style='text-align:center;color:#503A3A'> THERE IS NOTHING IN YOUR CART </h1><br/>";
+                echo "<h1 style='text-align:center'><a href='index.php'> Ott's Oddities Main Page</a></h1>";
+            }
+        ?>
         <div id="welcome">
         Thank You For Shopping With Us!
        </div>
@@ -48,16 +55,15 @@ function getItems(){
             for ($i=0; $i<sizeof($productId); $i++){
                  foreach($records as $record){
                     // echo "test: " . $record['productId'] . " == " . $productId[$i] . "<br>";
-                    if($record['productId'] == $productId[$i]){
-                        echo "<tr>";
+                    if($record['productId'] == $productId[$i]){                            echo "<tr>";
                         echo "<td> <a href='getProductInfo.php?productId=".$record['productId']."' target = 'productInfoiFrame'>" . $record['productName'] . "</a></td>";
                         echo "<td>".$record['price']."</td>";
                         $total += $record['price'];
                         echo "</tr>";
                      }  
-                 }
+                    }
             }
-            echo "Total Price: " . $total;
+            echo "Total Price: $" . $total;
         ?>
         </table>
         </div>
